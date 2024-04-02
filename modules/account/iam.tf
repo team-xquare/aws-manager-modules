@@ -1,5 +1,5 @@
 
-data "aws_iam_policy_document" "dms" {
+data "aws_iam_policy_document" "this" {
   statement {
     actions = [
       "iam:ChangePassword",
@@ -13,8 +13,10 @@ data "aws_iam_policy_document" "dms" {
   statement {
     actions   = [
       "ec2:Describe*",
+      "ec2:CreateKeyPair",
+      "ec2:CreateSecurityGroup",
       "rds:Describe*",
-      "s3:List*",
+      "s3:ListAllMyBuckets",
       "kms:List*"
     ]
     resources = ["*"]
@@ -23,18 +25,26 @@ data "aws_iam_policy_document" "dms" {
   
   statement {
     actions   = ["*"]
-    resources = [aws_s3_bucket.this.arn, "${aws_s3_bucket.this.arn}/*"]
+    resources = [
+      aws_s3_bucket.this.arn,
+      "${aws_s3_bucket.this.arn}/*"
+    ]
     effect    = "Allow"
   }
 
   statement {
     actions = ["ec2:RunInstances"]
     resources = [
-      "arn:aws:ec2:*:*:network-interface/*",
-      "arn:aws:ec2:*:*:security-group/*",
       "arn:aws:ec2:*:*:subnet/*",
-      "arn:aws:ec2:*:*:volume/*",
       "arn:aws:ec2:*::image/*"
+    ]
+    effect    = "Allow"
+  }
+
+  statement {
+    actions = ["*"]
+    resources = [
+      "arn:aws:ec2:*:*:security-group/*",
     ]
     effect    = "Allow"
   }
@@ -75,7 +85,7 @@ data "aws_iam_policy_document" "dms" {
 
 resource "aws_iam_policy" "this" {
   name        = "${var.name}_policy"
-  policy      = data.aws_iam_policy_document.dms.json
+  policy      = data.aws_iam_policy_document.this.json
 }
 
 resource "aws_iam_user_policy_attachment" "this" {
@@ -95,5 +105,7 @@ resource "aws_iam_user_login_profile" "this" {
   user                    = aws_iam_user.this.name
   password_length         = 20
   password_reset_required = true
-  pgp_key                 = ""
+  lifecycle {
+    ignore_changes = [password_reset_required]
+  }
 }
