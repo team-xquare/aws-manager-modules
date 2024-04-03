@@ -36,7 +36,8 @@ data "aws_iam_policy_document" "this" {
     actions = ["ec2:RunInstances"]
     resources = [
       "arn:aws:ec2:*:*:subnet/*",
-      "arn:aws:ec2:*::image/*"
+      "arn:aws:ec2:*::image/*",
+      "arn:aws:ec2:*:*:key-pair/*"
     ]
     effect    = "Allow"
   }
