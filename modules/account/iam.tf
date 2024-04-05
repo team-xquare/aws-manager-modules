@@ -17,6 +17,7 @@ data "aws_iam_policy_document" "this" {
       "ec2:CreateSecurityGroup",
       "rds:Describe*",
       "s3:ListAllMyBuckets",
+      "cloudwatch:DescribeAlarms",
       "kms:List*"
     ]
     resources = ["*"]
