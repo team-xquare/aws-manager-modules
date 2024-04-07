@@ -5,7 +5,6 @@ locals {
   ]
   school_type = "school" // 학교 프로젝트
   school_account = [
-    "entry"
   ]
   class_type = "class" // 수업
   class_account = [
@@ -28,6 +27,10 @@ module "school_account" {
   for_each = toset(local.school_account)
   name     = each.value
   type     = "school"
+}
+
+module "entry_account" {
+  source = "./modules/entry"
 }
 
 module "class_account" {
