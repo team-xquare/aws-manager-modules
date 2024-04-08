@@ -12,7 +12,7 @@ locals {
 }
 
 module "club_account" {
-  
+
   source = "./modules/account"
 
   for_each = toset(local.club_account)
@@ -21,7 +21,7 @@ module "club_account" {
 }
 
 module "school_account" {
-  
+
   source = "./modules/account"
 
   for_each = toset(local.school_account)
@@ -29,12 +29,8 @@ module "school_account" {
   type     = "school"
 }
 
-module "entry_account" {
-  source = "./modules/entry"
-}
-
 module "class_account" {
-  
+
   source = "./modules/account"
 
   for_each = toset(local.class_account)
