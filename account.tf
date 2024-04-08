@@ -5,7 +5,6 @@ locals {
   ]
   school_type = "school" // 학교 프로젝트
   school_account = [
-    "entry"
   ]
   class_type = "class" // 수업
   class_account = [
@@ -13,7 +12,7 @@ locals {
 }
 
 module "club_account" {
-  
+
   source = "./modules/account"
 
   for_each = toset(local.club_account)
@@ -22,7 +21,7 @@ module "club_account" {
 }
 
 module "school_account" {
-  
+
   source = "./modules/account"
 
   for_each = toset(local.school_account)
@@ -31,7 +30,7 @@ module "school_account" {
 }
 
 module "class_account" {
-  
+
   source = "./modules/account"
 
   for_each = toset(local.class_account)
