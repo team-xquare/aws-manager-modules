@@ -37,7 +37,9 @@ data "aws_iam_policy_document" "this" {
       "iam:PassRole",
       "servicediscovery:GetOperation",
       "iam:CreateServiceLinkedRole",
-      "ec2:DeleteNetworkAclEntry"
+      "ec2:DeleteNetworkAclEntry",
+      "ec2:RunInstances",
+      "ec2:CreateNetworkAclEntry"
     ]
     resources = ["*"]
     effect    = "Allow"
