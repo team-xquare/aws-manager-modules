@@ -30,7 +30,14 @@ data "aws_iam_policy_document" "this" {
       "acm:*",
       "ecs:*",
       "elasticloadbalancing:*",
-      "kafka:*"
+      "kafka:*",
+      "ec2:CreateVpc",
+      "iam:CreateRole",
+      "s3:CreateBucket",
+      "iam:PassRole",
+      "servicediscovery:GetOperation",
+      "iam:CreateServiceLinkedRole",
+      "ec2:DeleteNetworkAclEntry"
     ]
     resources = ["*"]
     effect    = "Allow"
