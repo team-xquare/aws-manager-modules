@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "this" {
       "iam:CreateRole",
       "s3:CreateBucket",
       "iam:PassRole",
-      "servicediscovery:GetOperation",
+      "servicediscovery:*",
       "iam:CreateServiceLinkedRole",
       "ec2:DeleteNetworkAclEntry",
       "ec2:RunInstances",
