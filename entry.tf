@@ -39,7 +39,9 @@ data "aws_iam_policy_document" "this" {
       "iam:CreateServiceLinkedRole",
       "ec2:DeleteNetworkAclEntry",
       "ec2:RunInstances",
-      "ec2:CreateNetworkAclEntry"
+      "ec2:CreateNetworkAclEntry",
+      "application-autoscaling:*",
+      "logs:FilterLogEvents"
     ]
     resources = ["*"]
     effect    = "Allow"

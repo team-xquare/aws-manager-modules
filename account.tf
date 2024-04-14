@@ -1,7 +1,8 @@
 locals {
   club_type = "club" // 전공동아리
   club_account = [
-    "modeep"
+    "modeep",
+    "info"
   ]
   school_type = "school" // 학교 프로젝트
   school_account = [
