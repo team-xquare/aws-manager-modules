@@ -6,6 +6,7 @@ locals {
   ]
   school_type = "school" // 학교 프로젝트
   school_account = [
+    "jobis"
   ]
   class_type = "class" // 수업
   class_account = [
