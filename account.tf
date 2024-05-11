@@ -6,7 +6,8 @@ locals {
   ]
   school_type = "school" // 학교 프로젝트
   school_account = [
-    "jobis"
+    "jobis",
+    "repo"
   ]
   class_type = "class" // 수업
   class_account = [
@@ -60,3 +61,4 @@ output "class_password" {
     for v in module.class_account : v.iam_user_password
   ]
 }
+
